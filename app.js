@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
 app.use(express.json());
+const db = require("./models");
+require("./routes")(app);
 
-app.get("/", (req, res) => {
-  res.send("hello world");
+db.sequelize.sync({ force: false }).then(() => {
+  // console.log("Drop and re-sync db!");
 });
 
 app.listen(8080, () => {
-  console.log("server running");
+  console.log("Server is running!");
 });

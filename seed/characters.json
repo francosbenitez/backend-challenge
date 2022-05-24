@@ -1,0 +1,16 @@
+[
+  {
+    "image": "https://www.francosbenitez.com/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fpublic%2Fimages%2Fothers%2Favatar.5d0f92541e661522605db2998e4443c1.jpg&w=640&q=75",
+    "name": "Franco",
+    "age": 24,
+    "weigh": 60,
+    "story": "Franco is one of the best characters who was born in Longchamps, Buenos Aires, Argentina."
+  },
+  {
+    "image": "",
+    "name": "Lucas",
+    "age": 24,
+    "weigh": 98,
+    "story": "Lucas is well-known by his passion about the Club Atlético Independiente."
+  }
+]
