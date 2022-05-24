@@ -1,7 +1,7 @@
-module.exports = (sequelize, type) => {
+module.exports = (sequelize, DataTypes) => {
   const Gender = sequelize.define("gender", {
-    name: type.STRING,
-    image: type.STRING,
+    name: DataTypes.STRING,
+    image: DataTypes.STRING,
   });
   return Gender;
 };

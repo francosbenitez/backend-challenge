@@ -1,4 +1,5 @@
 const db = require("../src/models");
+const Promise = require("bluebird");
 const Character = db.character;
 const Film = db.film;
 

@@ -1,9 +1,9 @@
-module.exports = (sequelize, type) => {
+module.exports = (sequelize, DataTypes) => {
   const Film = sequelize.define("film", {
-    image: type.STRING,
-    title: type.STRING,
-    date: type.DATE,
-    score: type.INTEGER,
+    image: DataTypes.STRING,
+    title: DataTypes.STRING,
+    date: DataTypes.DATE,
+    score: DataTypes.INTEGER,
   });
   return Film;
 };

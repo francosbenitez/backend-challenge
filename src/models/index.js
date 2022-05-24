@@ -14,7 +14,6 @@ db.character = require("./Character")(sequelize, Sequelize);
 db.film = require("./Film")(sequelize, Sequelize);
 db.gender = require("./Gender")(sequelize, Sequelize);
 
-db.character.belongsTo(db.film);
 db.film.belongsTo(db.character);
 
 // db.gender.belongsTo(db.character);
