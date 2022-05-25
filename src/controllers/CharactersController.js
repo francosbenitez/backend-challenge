@@ -7,6 +7,7 @@ module.exports = {
     try {
       characters = await Character.findAll({
         limit: 10,
+        attributes: ["image", "name"],
       });
       res.send(characters);
     } catch (err) {

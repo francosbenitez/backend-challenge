@@ -12,5 +12,9 @@ module.exports = (app) => {
   app.post("/auth/login", AuthenticationController.login);
 
   app.get("/characters", isAuthenticated, CharactersController.get);
-  app.get("/characters/:characterId", CharactersController.show);
+  app.get(
+    "/characters/:characterId",
+    isAuthenticated,
+    CharactersController.show
+  );
 };
