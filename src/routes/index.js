@@ -5,11 +5,11 @@ const isAuthenticated = require("../policies/isAuthenticated");
 
 module.exports = (app) => {
   app.post(
-    "/register",
+    "/auth/register",
     AuthenticationControllerPolicy.register,
     AuthenticationController.register
   );
-  app.post("/login", AuthenticationController.login);
+  app.post("/auth/login", AuthenticationController.login);
 
   app.get("/characters", isAuthenticated, CharactersController.get);
   app.get("/characters/:characterId", CharactersController.show);
