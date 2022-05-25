@@ -3,5 +3,10 @@
   - Create controllers. DONE
   - Move to TypeScript.
 - Set up authentication.
-  - Login.
-  - Register.
+  - Login. DONE
+  - Register. DONE
+- Set up CRUD operations.
+  - /characters.
+    - Delete.
+    - Put.
+    - Post.
