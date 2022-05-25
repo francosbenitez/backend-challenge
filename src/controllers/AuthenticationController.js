@@ -43,7 +43,6 @@ module.exports = {
       }
 
       if (user) {
-        console.log(password, user.password);
         const equals = bcrypt.compareSync(password, user.password);
         if (equals) {
           const userJson = user.toJSON();
@@ -52,10 +51,10 @@ module.exports = {
             token: jwtSignUser(userJson),
           });
         } else {
-          res.json({ error: "Error in user and/or password v1" });
+          res.json({ error: "An error has ocurred with user and/or password" });
         }
       } else {
-        res.json({ error: "Error in user and/or password v2" });
+        res.json({ error: "An error has ocurred with user and/or password" });
       }
     } catch (err) {
       res.status(500).send({
