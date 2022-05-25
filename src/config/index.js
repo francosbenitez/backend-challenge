@@ -1,5 +1,5 @@
 module.exports = {
-  PORT: process.env.PORT || 3306,
+  PORT: process.env.PORT || 8080,
   HOST: "localhost",
   USER: "root",
   PASSWORD: "",

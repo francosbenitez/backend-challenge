@@ -1,11 +1,17 @@
 const express = require("express");
-const app = express();
+const cors = require("cors");
+// const morgan = require("morgan");
 const db = require("./models");
 const config = require("./config");
-require("./routes")(app);
 
+const app = express();
+// app.use(morgan('combined'))
 app.use(express.json());
+app.use(cors());
+
 require("./passport");
+
+require("./routes")(app);
 
 db.sequelize.sync({ force: false }).then(() => {
   // console.log("Drop and re-sync db!");
