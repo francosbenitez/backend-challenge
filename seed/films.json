@@ -3,14 +3,12 @@
     "image": "",
     "title": "Franco's film",
     "date": "08/05/1998",
-    "score": 4.5,
-    "characterId": 1
+    "score": 4.5
   },
   {
     "image": "",
     "title": "Lucas's film",
     "date": "05/03/1998",
-    "score": 4.8,
-    "characterId": 2
+    "score": 4.8
   }
 ]

@@ -12,10 +12,19 @@ db.Sequelize = Sequelize;
 
 db.character = require("./Character")(sequelize, Sequelize);
 db.film = require("./Film")(sequelize, Sequelize);
-db.gender = require("./Gender")(sequelize, Sequelize);
+db.film_character = require("./FilmCharacter")(sequelize, Sequelize);
+// db.gender = require("./Gender")(sequelize, Sequelize);
 
-db.film.belongsTo(db.character);
+db.character.belongsToMany(db.film, {
+  through: db.film_character,
+  as: "films",
+  foreignKey: "character_id",
+});
 
-// db.gender.belongsTo(db.character);
+db.film.belongsToMany(db.character, {
+  through: db.film_character,
+  as: "characters",
+  foreignKey: "film_id",
+});
 
 module.exports = db;
