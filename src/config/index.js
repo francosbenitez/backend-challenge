@@ -5,4 +5,7 @@ module.exports = {
   PASSWORD: "",
   DB: "challenge-db",
   dialect: "mysql",
+  authentication: {
+    jwtSecret: process.env.JWT_SECRET || "secret",
+  },
 };

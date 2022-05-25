@@ -2,3 +2,6 @@
 - Init project.
   - Create controllers. DONE
   - Move to TypeScript.
+- Set up authentication.
+  - Login.
+  - Register.

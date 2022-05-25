@@ -10,6 +10,7 @@ const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD, {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.user = require("./User")(sequelize, Sequelize);
 db.character = require("./Character")(sequelize, Sequelize);
 db.film = require("./Film")(sequelize, Sequelize);
 db.film_character = require("./FilmCharacter")(sequelize, Sequelize);
