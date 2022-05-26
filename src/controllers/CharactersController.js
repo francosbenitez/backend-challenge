@@ -11,8 +11,9 @@ module.exports = {
 
       const name = req.query.name;
       const age = req.query.age;
+      const filmId = req.query.films;
 
-      if (name || age) {
+      if (name || age || filmId) {
         if (name) {
           characters = await Character.findAll({
             where: {
@@ -29,6 +30,20 @@ module.exports = {
                 [Op.like]: `%${age}%`,
               },
             },
+          });
+        }
+        if (filmId) {
+          characters = await Film.findByPk(filmId, {
+            include: [
+              {
+                model: Character,
+                as: "characters",
+                attributes: ["id", "image", "name", "age", "weigh", "story"],
+                through: {
+                  attributes: [],
+                },
+              },
+            ],
           });
         }
       } else {
@@ -53,7 +68,7 @@ module.exports = {
           {
             model: Film,
             as: "films",
-            attributes: ["image", "title", "date", "score"],
+            attributes: ["id", "image", "title", "date", "score"],
             through: {
               attributes: [],
             },
