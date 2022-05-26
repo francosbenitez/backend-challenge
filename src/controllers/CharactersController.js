@@ -38,4 +38,15 @@ module.exports = {
       });
     }
   },
+
+  async post(req, res) {
+    try {
+      const newCharacter = await Character.create(req.body);
+      res.send(newCharacter);
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has ocurred trying to create the character",
+      });
+    }
+  },
 };

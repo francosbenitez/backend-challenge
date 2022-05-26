@@ -17,4 +17,5 @@ module.exports = (app) => {
     isAuthenticated,
     CharactersController.show
   );
+  app.post("/characters", isAuthenticated, CharactersController.post);
 };
