@@ -1,7 +1,8 @@
-const CharactersController = require("../controllers/CharactersController");
 const AuthenticationController = require("../controllers/AuthenticationController");
 const AuthenticationControllerPolicy = require("../policies/AuthenticationControllerPolicy");
 const isAuthenticated = require("../policies/isAuthenticated");
+const CharactersController = require("../controllers/CharactersController");
+const FilmsController = require("../controllers/FilmsController");
 
 module.exports = (app) => {
   // REGISTER & LOGIN
@@ -30,4 +31,7 @@ module.exports = (app) => {
     isAuthenticated,
     CharactersController.put
   );
+
+  // FILMS
+  app.get("/films", isAuthenticated, FilmsController.get);
 };
