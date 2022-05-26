@@ -1,4 +1,3 @@
-const { character } = require("../models");
 const db = require("../models");
 const Character = db.character;
 const Film = db.film;

@@ -5,9 +5,12 @@
 - Set up authentication.
   - Login. DONE
   - Register. DONE
-- Set up CRUD operations.
-  - /characters.
+- Set up /characters CRUD operations.
     - Post. DONE
     - Put. DONE
     - Delete. DONE
-- Set up search by character.
+- Set up search by character. DONE
+- Set up /films CRUD operations.
+    - Post.
+    - Put.
+    - Delete.
