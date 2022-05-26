@@ -7,6 +7,7 @@
   - Register. DONE
 - Set up CRUD operations.
   - /characters.
-    - Post.
-    - Put.
-    - Delete.
+    - Post. DONE
+    - Put. DONE
+    - Delete. DONE
+- Set up search by character.

@@ -2,18 +2,45 @@ const { character } = require("../models");
 const db = require("../models");
 const Character = db.character;
 const Film = db.film;
+const { Op } = require("sequelize");
 
 module.exports = {
   async get(req, res) {
     try {
-      characters = await Character.findAll({
-        limit: 10,
-        attributes: ["image", "name"],
-      });
+      console.log(">> req.query: ", req.query);
+
+      const name = req.query.name;
+      const age = req.query.age;
+
+      if (name || age) {
+        if (name) {
+          characters = await Character.findAll({
+            where: {
+              name: {
+                [Op.like]: `%${name}%`,
+              },
+            },
+          });
+        }
+        if (age) {
+          characters = await Character.findAll({
+            where: {
+              age: {
+                [Op.like]: `%${age}%`,
+              },
+            },
+          });
+        }
+      } else {
+        characters = await Character.findAll({
+          limit: 10,
+          attributes: ["image", "name"],
+        });
+      }
       res.send(characters);
     } catch (err) {
       res.status(500).send({
-        error: "An error has ocurred trying to get the characters",
+        error: "An error has ocurred trying to get the characters: " + err,
       });
     }
   },
@@ -36,7 +63,7 @@ module.exports = {
       res.send(character);
     } catch (err) {
       res.status(500).send({
-        error: "An error has ocurred trying to show the character",
+        error: "An error has ocurred trying to show the character: " + err,
       });
     }
   },
@@ -47,7 +74,7 @@ module.exports = {
       res.send(newCharacter);
     } catch (err) {
       res.status(500).send({
-        error: "An error has ocurred trying to create the character",
+        error: "An error has ocurred trying to create the character: " + err,
       });
     }
   },
@@ -65,7 +92,7 @@ module.exports = {
     } catch (err) {
       console.log(err);
       res.status(500).send({
-        error: "An error has ocurred trying to delete the character",
+        error: "An error has ocurred trying to delete the character: " + err,
       });
     }
   },
@@ -81,7 +108,7 @@ module.exports = {
       res.send(req.body);
     } catch (err) {
       res.status(500).send({
-        error: "An error has ocurred trying to update the character",
+        error: "An error has ocurred trying to update the character: " + err,
       });
     }
   },
