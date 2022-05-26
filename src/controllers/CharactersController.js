@@ -20,7 +20,8 @@ module.exports = {
 
   async show(req, res) {
     try {
-      const character = await Character.findByPk(req.params.characterId, {
+      const { characterId } = req.params;
+      const character = await Character.findByPk(characterId, {
         include: [
           {
             model: Film,
@@ -53,7 +54,6 @@ module.exports = {
 
   async delete(req, res) {
     try {
-      console.log("req.user", req.user);
       const { characterId } = req.params;
       const character = await Character.findOne({
         where: {
@@ -66,6 +66,22 @@ module.exports = {
       console.log(err);
       res.status(500).send({
         error: "An error has ocurred trying to delete the character",
+      });
+    }
+  },
+
+  async put(req, res) {
+    try {
+      const { characterId } = req.params;
+      await Character.update(req.body, {
+        where: {
+          id: characterId,
+        },
+      });
+      res.send(req.body);
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has ocurred trying to update the character",
       });
     }
   },

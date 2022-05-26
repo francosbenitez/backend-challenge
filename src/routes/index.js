@@ -25,4 +25,9 @@ module.exports = (app) => {
     isAuthenticated,
     CharactersController.delete
   );
+  app.put(
+    "/characters/:characterId",
+    isAuthenticated,
+    CharactersController.put
+  );
 };
