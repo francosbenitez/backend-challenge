@@ -4,6 +4,7 @@ const AuthenticationControllerPolicy = require("../policies/AuthenticationContro
 const isAuthenticated = require("../policies/isAuthenticated");
 
 module.exports = (app) => {
+  // REGISTER & LOGIN
   app.post(
     "/auth/register",
     AuthenticationControllerPolicy.register,
@@ -11,6 +12,7 @@ module.exports = (app) => {
   );
   app.post("/auth/login", AuthenticationController.login);
 
+  // CHARACTERS
   app.get("/characters", isAuthenticated, CharactersController.get);
   app.get(
     "/characters/:characterId",
@@ -18,4 +20,9 @@ module.exports = (app) => {
     CharactersController.show
   );
   app.post("/characters", isAuthenticated, CharactersController.post);
+  app.delete(
+    "/characters/:characterId",
+    isAuthenticated,
+    CharactersController.delete
+  );
 };

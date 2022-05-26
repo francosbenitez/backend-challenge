@@ -1,3 +1,4 @@
+const { character } = require("../models");
 const db = require("../models");
 const Character = db.character;
 const Film = db.film;
@@ -46,6 +47,25 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: "An error has ocurred trying to create the character",
+      });
+    }
+  },
+
+  async delete(req, res) {
+    try {
+      console.log("req.user", req.user);
+      const { characterId } = req.params;
+      const character = await Character.findOne({
+        where: {
+          id: characterId,
+        },
+      });
+      await character.destroy();
+      res.send(character);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send({
+        error: "An error has ocurred trying to delete the character",
       });
     }
   },
