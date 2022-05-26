@@ -7,8 +7,6 @@ const { Op } = require("sequelize");
 module.exports = {
   async get(req, res) {
     try {
-      console.log(">> req.query: ", req.query);
-
       const name = req.query.name;
       const age = req.query.age;
       const filmId = req.query.films;
