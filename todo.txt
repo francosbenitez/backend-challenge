@@ -18,3 +18,5 @@
   - Upload five real films.
   - Upload five real characters.
   - Upload five real genders.
+- Test automatic deployment with Heroku.
+- Implement NODE_DEV and process.env variables.
