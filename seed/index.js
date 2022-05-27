@@ -18,6 +18,7 @@ const Gender = db.gender;
 db.sequelize.sync({ force: true }).then(async function () {
   await Promise.all(
     users.map((user) => {
+      console.log(">> processing users");
       user.password = bcrypt.hashSync(user.password, 10);
       User.create(user);
     })
@@ -25,24 +26,28 @@ db.sequelize.sync({ force: true }).then(async function () {
 
   await Promise.all(
     characters.map((character) => {
+      console.log(">> processing characters");
       Character.create(character);
     })
   );
 
   await Promise.all(
     genders.map((gender) => {
+      console.log(">> processing genders");
       Gender.create(gender);
     })
   );
 
   await Promise.all(
     films.map((film) => {
+      console.log(">> processing films");
       Film.create(film);
     })
   );
 
   await Promise.all(
     films_characters.map((film_character) => {
+      console.log(">> processing films_characters");
       FilmCharacter.create(film_character);
     })
   );
