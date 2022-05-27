@@ -16,6 +16,7 @@ db.sequelize.sync({ force: false }).then(() => {
   // console.log("Drop and re-sync db!");
 });
 
-app.listen(config.PORT, () => {
-  console.log(`Server is running on port http://localhost:${config.PORT}/`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });
