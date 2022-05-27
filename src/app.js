@@ -1,11 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-// const morgan = require("morgan");
 const db = require("./models");
 const config = require("./config");
 
 const app = express();
-// app.use(morgan('combined'))
 app.use(express.json());
 app.use(cors());
 
