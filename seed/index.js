@@ -30,6 +30,12 @@ db.sequelize.sync({ force: true }).then(async function () {
   );
 
   await Promise.all(
+    genders.map((gender) => {
+      Gender.create(gender);
+    })
+  );
+
+  await Promise.all(
     films.map((film) => {
       Film.create(film);
     })
@@ -38,12 +44,6 @@ db.sequelize.sync({ force: true }).then(async function () {
   await Promise.all(
     films_characters.map((film_character) => {
       FilmCharacter.create(film_character);
-    })
-  );
-
-  await Promise.all(
-    genders.map((gender) => {
-      Gender.create(gender);
     })
   );
 });
