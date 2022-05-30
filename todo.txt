@@ -20,3 +20,4 @@
   - Upload five real genders.
 - Test automatic deployment with Heroku.
 - Implement NODE_DEV and process.env variables.
+- Implement Docker.

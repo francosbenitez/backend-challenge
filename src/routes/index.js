@@ -34,4 +34,5 @@ module.exports = (app) => {
 
   // FILMS
   app.get("/films", isAuthenticated, FilmsController.get);
+  app.get("/films/:filmId", isAuthenticated, FilmsController.show);
 };
