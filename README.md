@@ -1,4 +1,4 @@
-# Backend challenge
+# Backend Challenge
 - Built a server application with Node.
 
 ## Code and Resources Used
