@@ -39,4 +39,15 @@ module.exports = {
       });
     }
   },
+
+  async post(req, res) {
+    try {
+      const newFilm = await Film.create(req.body);
+      res.send(newFilm);
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has ocurred trying to create the film: " + err,
+      });
+    }
+  },
 };
