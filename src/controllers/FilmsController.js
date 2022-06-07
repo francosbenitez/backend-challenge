@@ -7,14 +7,22 @@ module.exports = {
   async get(req, res) {
     try {
       const title = req.query.name;
+      const genderId = req.query.genre;
 
-      if (title) {
+      if (title || genderId) {
         if (title) {
           films = await Film.findAll({
             where: {
               title: {
                 [Op.like]: `%${title}%`,
               },
+            },
+          });
+        }
+        if (genderId) {
+          films = await Film.findAll({
+            where: {
+              genderId: genderId,
             },
           });
         }
