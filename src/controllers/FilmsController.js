@@ -1,14 +1,29 @@
 const db = require("../models");
 const Character = db.character;
 const Film = db.film;
+const { Op } = require("sequelize");
 
 module.exports = {
   async get(req, res) {
     try {
-      films = await Film.findAll({
-        limit: 10,
-        attributes: ["image", "title", "date"],
-      });
+      const title = req.query.name;
+
+      if (title) {
+        if (title) {
+          films = await Film.findAll({
+            where: {
+              title: {
+                [Op.like]: `%${title}%`,
+              },
+            },
+          });
+        }
+      } else {
+        films = await Film.findAll({
+          limit: 10,
+          attributes: ["image", "title", "date"],
+        });
+      }
       res.send(films);
     } catch (err) {
       res.status(500).send({
