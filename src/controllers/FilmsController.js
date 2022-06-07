@@ -8,8 +8,11 @@ module.exports = {
     try {
       const title = req.query.name;
       const genderId = req.query.genre;
+      const order = req.query.order;
 
-      if (title || genderId) {
+      console.log("order", order);
+
+      if (title || genderId || order) {
         if (title) {
           films = await Film.findAll({
             where: {
@@ -24,6 +27,11 @@ module.exports = {
             where: {
               genderId: genderId,
             },
+          });
+        }
+        if (order) {
+          films = await Film.findAll({
+            order: [["date", order]],
           });
         }
       } else {
