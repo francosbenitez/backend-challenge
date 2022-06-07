@@ -68,4 +68,20 @@ module.exports = {
       });
     }
   },
+
+  async put(req, res) {
+    try {
+      const { filmId } = req.params;
+      await Film.update(req.body, {
+        where: {
+          id: filmId,
+        },
+      });
+      res.send(req.body);
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has ocurred trying to update the film: " + err,
+      });
+    }
+  },
 };
