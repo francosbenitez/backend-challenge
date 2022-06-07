@@ -36,4 +36,5 @@ module.exports = (app) => {
   app.get("/films", isAuthenticated, FilmsController.get);
   app.get("/films/:filmId", isAuthenticated, FilmsController.show);
   app.post("/films", isAuthenticated, FilmsController.post);
+  app.delete("/films/:filmId", isAuthenticated, FilmsController.delete);
 };

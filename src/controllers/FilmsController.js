@@ -50,4 +50,22 @@ module.exports = {
       });
     }
   },
+
+  async delete(req, res) {
+    try {
+      const { filmId } = req.params;
+      const film = await Film.findOne({
+        where: {
+          id: filmId,
+        },
+      });
+      await film.destroy();
+      res.send(film);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send({
+        error: "An error has ocurred trying to delete the film: " + err,
+      });
+    }
+  },
 };
